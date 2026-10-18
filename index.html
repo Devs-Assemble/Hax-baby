@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="day">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pip's Nursery — Junior Dream Engineer</title>
+<meta name="description" content="Meet Pip, the skull baby who engineers dreams, lullabies and nightlights at Midnight Nursery.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💤</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,500&family=Fredoka:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff8f1;--ink:#5c4033;--accent:#a34063;--card:#fffdf9;--line:#ecd9cc;--glow:#ffd68a;--star:#e8b04a;--r:28px}
+[data-theme=night]{--bg:#1d1630;--ink:#f4e6d9;--accent:#f4a9c0;--card:#2b2145;--line:#4a3b6b;--star:#ffe08a}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.05rem/1.65 Fredoka,system-ui,sans-serif;transition:background .6s,color .6s;overflow-x:hidden;
+background-image:radial-gradient(var(--line) 1.2px,transparent 1.4px);background-size:26px 26px}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;line-height:1.12;margin:0 0 .5em;color:var(--accent)}
+h1{font-size:clamp(2.6rem,9vw,5.2rem);font-weight:700}
+h2{font-size:clamp(1.9rem,5vw,3rem)}
+h3{font-size:1.45rem;color:var(--ink)}
+section{max-width:1040px;margin:0 auto;padding:4.5rem 1.25rem}
+p{max-width:62ch;margin:.4em 0}
+button{font:inherit;cursor:pointer;color:inherit}
+:focus-visible{outline:3px dashed var(--accent);outline-offset:3px}
+.btn{background:var(--accent);color:#fff8f1;border:0;border-radius:999px;padding:.65rem 1.4rem;font-weight:500;box-shadow:0 4px 0 rgba(0,0,0,.18);transition:transform .12s,box-shadow .12s}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 rgba(0,0,0,.18)}
+.marquee{background:var(--accent);color:#fff8f1;overflow:hidden;white-space:nowrap;font-weight:500;padding:.35rem 0}
+.marquee span{display:inline-block;padding-left:100%;animation:mq 28s linear infinite}
+@keyframes mq{to{transform:translateX(-100%)}}
+.tools{position:fixed;top:44px;right:12px;z-index:50;display:flex;gap:8px}
+.tools button{width:46px;height:46px;border-radius:50%;border:2px solid var(--accent);background:var(--card);font-size:1.3rem;line-height:1}
+.hero{display:grid;grid-template-columns:1.1fr 1fr;gap:2rem;align-items:center;min-height:86vh}
+.hero em{font-style:italic;color:var(--ink)}
+.badge{display:inline-block;border:2px dashed var(--accent);border-radius:8px;padding:.1rem .6rem;font-size:.85rem;transform:rotate(-2deg);margin-bottom:1rem}
+.pip{position:relative;width:min(390px,84vw);margin:0 auto;animation:bob 5s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-12px)}}
+.pip img{display:block;width:100%;height:auto;border-radius:36px;box-shadow:0 20px 50px rgba(163,64,99,.22)}
+.eye{position:absolute;width:6.8%;aspect-ratio:1;border-radius:50%;transform:translate(-50%,-50%);background:radial-gradient(#2a1812 68%,transparent 72%)}
+.eye i{position:absolute;left:50%;top:50%;width:36%;height:36%;border-radius:50%;background:#ffc45c;box-shadow:0 0 10px 3px rgba(255,196,92,.85);transform:translate(calc(-50% + var(--dx,0px)),calc(-50% + var(--dy,0px)));transition:opacity .4s}
+.pip.asleep .eye i{opacity:0}
+.zzz{position:absolute;right:4%;top:2%;font-size:2rem;opacity:0;transition:opacity .4s}.pip.asleep .zzz{opacity:1}
+.sheet{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.4fr);gap:2rem;align-items:start}
+.sheet>img{width:100%;border-radius:var(--r);border:3px solid var(--line)}
+dl{margin:0;display:grid;gap:.9rem}
+dt{font-family:Fraunces,serif;font-weight:700;color:var(--accent);font-size:1.2rem}
+dd{margin:0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.4rem;margin-top:1.5rem}
+.card{background:var(--card);border:3px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column}
+.card .art{aspect-ratio:1/.9;overflow:hidden;position:relative;border:0;padding:0;background:none;display:block;width:100%}
+.card .art img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s,filter .5s}
+.card .txt{padding:1.1rem 1.3rem 1.4rem;display:grid;gap:.6rem;align-content:start}
+.card .txt p{margin:0}
+.wide{grid-column:1/-1}
+.wound .art img{animation:wob .5s 6}
+@keyframes wob{25%{transform:rotate(-2deg) scale(1.03)}75%{transform:rotate(2deg) scale(1.03)}}
+.lamp img{filter:brightness(.55) saturate(.7)}
+.lamp.on img{filter:brightness(1.06) drop-shadow(0 0 22px var(--glow))}
+.note{position:fixed;pointer-events:none;z-index:60;font-size:1.6rem;animation:up 1.8s forwards}
+@keyframes up{to{transform:translateY(-120px);opacity:0}}
+#route{width:100%;height:auto;background:linear-gradient(#2a2050,#4b3a78);border-radius:var(--r)}
+#route .trail{fill:none;stroke:#ffd68a;stroke-width:3;stroke-dasharray:2 9;stroke-linecap:round;opacity:.35}
+#route .done{fill:none;stroke:#ffd68a;stroke-width:4;stroke-linecap:round}
+#route text{fill:#fff3e0;font:500 13px Fredoka,sans-serif;text-anchor:middle}
+#route .stop circle{fill:#4b3a78;stroke:#ffd68a;stroke-width:3;transition:fill .4s}
+#route .stop.hit circle{fill:#ffd68a}
+.scene{max-width:640px;margin:0 auto 38vh;padding:1.6rem 1.8rem;background:var(--card);border:3px solid var(--line);border-radius:var(--r);opacity:.12;transform:scale(.96);transition:.8s}
+.scene.in{opacity:1;transform:none}
+.scene:nth-child(even){margin-left:auto;margin-right:0}
+.scene .em{font-size:2.6rem;display:block}
+.gb{display:grid;gap:.6rem;max-width:520px}
+.gb input,.gb textarea{font:inherit;padding:.6rem .9rem;border:2px solid var(--line);border-radius:16px;background:var(--card);color:var(--ink)}
+#wall{list-style:none;padding:0;margin:1.5rem 0 0;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem}
+#wall li{background:#fff1a8;color:#5c4033;padding:.8rem 1rem;border-radius:6px;box-shadow:3px 4px 0 rgba(0,0,0,.15);transform:rotate(var(--t,-1deg))}
+#wall b{display:block}
+footer{text-align:center;padding:3rem 1rem 5rem;border-top:3px dashed var(--line)}
+.odo{display:inline-flex;gap:3px;background:#2a1812;padding:6px;border-radius:8px;margin:.5rem 0}
+.odo b{background:#fff8f1;color:#2a1812;font:700 1.3rem/1 monospace;padding:.35rem .45rem;border-radius:4px}
+.b88{display:inline-block;font:600 .7rem/1 Fredoka;border:2px outset #cc9;background:#fff1a8;color:#5c4033;padding:.5rem .6rem;margin:3px}
+#moon{background:none;border:0;font-size:1.6rem;opacity:.75}
+.blocks{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.blk{width:64px;height:64px;border-radius:14px;border:0;font-size:1.8rem;color:#5c4033;box-shadow:inset 0 -6px 0 rgba(0,0,0,.15),0 4px 0 rgba(0,0,0,.15)}
+.blk.hit{animation:hop .35s}
+@keyframes hop{40%{transform:translateY(-22px) rotate(-6deg)}}
+.shake{animation:shk .12s 5}
+@keyframes shk{25%{transform:rotate(-12deg)}75%{transform:rotate(12deg)}}
+#dark{position:fixed;inset:0;z-index:40;pointer-events:none;opacity:0;transition:opacity .5s;background:radial-gradient(circle 150px at var(--x,50%) var(--y,50%),transparent 0,transparent 55%,rgba(8,4,20,.92) 100%)}
+body.torch #dark{opacity:1}
+#toast{position:fixed;bottom:18px;left:50%;transform:translate(-50%,120px);background:var(--ink);color:var(--bg);padding:.6rem 1.2rem;border-radius:999px;z-index:80;transition:transform .4s;max-width:90vw}
+#toast.show{transform:translate(-50%,0)}
+.spark{position:fixed;pointer-events:none;z-index:70;color:var(--star);animation:sp .8s forwards;text-shadow:0 0 6px var(--glow)}
+@keyframes sp{to{opacity:0;transform:translateY(22px) scale(.2) rotate(120deg)}}
+#fx{position:fixed;inset:0;pointer-events:none;z-index:90}
+@media(max-width:760px){.hero,.sheet{grid-template-columns:1fr}.hero{min-height:0;padding-top:3rem;text-align:center}.hero p{margin-inline:auto}.sheet>img{max-width:320px;margin:auto}.scene:nth-child(even){margin-inline:auto}section{padding:3rem 1rem}}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01s!important;animation-iteration-count:1!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="marquee" aria-hidden="true"><span>★ welcome to pip's nursery ★ best viewed at bedtime ★ please keep your voice down ★ the moon is currently under construction 🚧 ★ psst… try typing zzz ★</span></div>
+<div class="tools">
+  <button id="mute" aria-pressed="false" aria-label="Mute sounds" title="Sound on/off">🔊</button>
+  <button id="torch" aria-pressed="false" aria-label="Flashlight cursor" title="Flashlight">🔦</button>
+  <button id="theme" aria-label="Switch to night mode" title="Day / night">🌙</button>
+</div>
+
+<section class="hero" id="top">
+  <div>
+    <span class="badge">🚧 under cozy construction since forever</span>
+    <h1>Hi, I'm Pip.</h1>
+    <p>I'm the <em>Junior Dream Engineer</em> at Midnight Nursery. I build the lullabies, nightlights and bedtime routes that help the neighborhood's little creatures fall asleep.</p>
+    <p><small>Psst, my eyes follow you. Move your mouse (or finger) around.</small></p>
+    <p style="margin-top:1.2rem"><button class="btn" id="hello">Say goodnight 🌙</button></p>
+  </div>
+  <div class="pip" id="pip">
+    <img src="assets/pip_avatar_cloud.jpg" alt="Pip, a sleepy skull baby in a star nightcap with a pink bow, sitting on a cloud and waving" width="800" height="973" fetchpriority="high">
+    <span class="eye" style="left:43.75%;top:40.6%"><i></i></span>
+    <span class="eye" style="left:58.5%;top:37.6%"><i></i></span>
+    <span class="zzz" aria-hidden="true">💤</span>
+  </div>
+</section>
+
+<section id="meet">
+  <h2>Meet the baby</h2>
+  <div class="sheet">
+    <img src="assets/pip_portrait.jpg" alt="Portrait of Pip holding a glowing lantern and a unicorn music box" loading="lazy" width="682" height="1024">
+    <dl>
+      <div><dt>What I am</dt><dd>A skull baby. Smooth round head, enormous soft eye sockets with two warm amber glows, and a tiny crooked smile. Not scary, just sleepy.</dd></div>
+      <div><dt>What I wear</dt><dd>A cream nightcap with stars and a pink bow, plus heart-print pajamas with matching lavender socks.</dd></div>
+      <div><dt>Personality</dt><dd>Gentle, a bit shy, very helpful once I've had a snack. I take bedtime extremely seriously.</dd></div>
+      <div><dt>Quirks</dt><dd>I yawn mid-sentence. I count stars instead of sheep. I hum in pentatonic. I keep every lost pacifier in a labelled drawer.</dd></div>
+      <div><dt>My voice</dt><dd>Soft as a whisper, and I end most sentences with “zzz”.</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section id="work">
+  <h2>Things I've made</h2>
+  <p>Four night-shift projects from the Midnight Nursery workshop. Go on, touch them.</p>
+  <div class="grid">
+    <article class="card" id="lab">
+      <button class="art" id="box" aria-label="Wind up the lullaby music box"><img src="assets/pip_lullaby_box.jpg" alt="Pastel music box with a unicorn on top and a golden winding key" loading="lazy" width="800" height="722"></button>
+      <div class="txt"><h3>The Lullaby Lab</h3><p>A wind-up music box that composes a new lullaby every time. Made with the Web Audio API and a pentatonic scale, so nothing can sound wrong.</p><button class="btn" id="wind">Wind it up ♪</button></div>
+    </article>
+    <article class="card lamp on" id="lamp">
+      <button class="art" id="lampbtn" aria-label="Toggle the moon nightlight" aria-pressed="true"><img src="assets/pip_dream_lantern.jpg" alt="Glowing nightlight with a sleeping crescent moon and stars cut into it" loading="lazy" width="800" height="714"></button>
+      <div class="txt"><h3>Nightlight Collection</h3><p>Soft lamps with stars cut into the shade. This one is the Sleepy Moon. Tap to switch it on and off, and try night mode up top for the full glow.</p></div>
+    </article>
+    <article class="card" id="toys">
+      <div class="art" style="display:grid;place-items:center;padding:1rem;background:radial-gradient(circle at 50% 30%,#fff1d6,#f5d9e3)"><div class="blocks" id="blocks"></div></div>
+      <div class="txt"><h3>Rattle &amp; Block Toys</h3><p>Tap the blocks to play notes. Pip remembers your last eight taps, so press play to hear your tune back.</p><div style="display:flex;gap:.6rem;flex-wrap:wrap"><button class="btn" id="rattle">Shake the rattle</button><button class="btn" id="replay">Play it back ▶</button></div></div>
+    </article>
+    <article class="card wide">
+      <div class="txt"><h3>Dream Delivery Routes</h3><p>Every night I fly dreams across the rooftops. Scroll and follow my cloud.</p></div>
+      <svg id="route" viewBox="0 0 640 250" role="img" aria-label="Map of Pip's cloud flying a dream delivery route across four rooftops">
+        <g fill="#35295e"><polygon points="40,250 40,205 70,185 100,205 100,250"/><polygon points="215,250 215,190 250,165 285,190 285,250"/><polygon points="380,250 380,215 410,198 440,215 440,250"/><polygon points="540,250 540,180 575,155 610,180 610,250"/></g>
+        <g fill="#ffe9a8"><circle cx="560" cy="35" r="14"/><circle cx="90" cy="40" r="2"/><circle cx="330" cy="30" r="2"/><circle cx="450" cy="60" r="2"/><circle cx="180" cy="75" r="2"/></g>
+        <path id="rp" class="trail" d="M60 175 C140 40 200 60 250 150 S380 230 410 190 S520 40 575 150"/>
+        <path id="rd" class="done" d="M60 175 C140 40 200 60 250 150 S380 230 410 190 S520 40 575 150"/>
+        <g id="stops"></g>
+        <g id="cloud"><ellipse rx="22" ry="12" fill="#fff"/><circle cx="-8" cy="-7" r="9" fill="#fff"/><circle cx="7" cy="-8" r="11" fill="#fff"/><circle cx="-5" cy="-1" r="2" fill="#2a1812"/><circle cx="5" cy="-1" r="2" fill="#2a1812"/></g>
+      </svg>
+    </article>
+  </div>
+</section>
+
+<section id="story">
+  <h2>How I got here</h2>
+  <p style="margin-bottom:5vh">Keep scrolling. Story time.</p>
+  <div class="scene"><span class="em">🌙</span><h3>The night the moon yawned</h3><p>On the quietest night of the year, a small cloud drifted over Midnight Nursery. Tucked in its fluff was a very small skull, two amber lights blinking awake. The moon yawned so wide that all the stars wobbled. That was me.</p></div>
+  <div class="scene"><span class="em">🦉</span><h3>Nobody could sleep</h3><p>The owls hooted. The kittens zoomed. The hedgehogs were doing laps. Everyone was tired and nobody could switch off. I wanted to help, but all I had was a cloud, a nightcap and a lot of feelings.</p></div>
+  <div class="scene"><span class="em">🎵</span><h3>The first lullaby</h3><p>Under my cloud I found a dusty music box. I wound the key. One note floated out, then another, and the zoomies slowed. The kittens yawned. The owls tucked in. I think that's when I knew what I was for.</p></div>
+  <div class="scene"><span class="em">🛠️</span><h3>Junior Dream Engineer</h3><p>Midnight Nursery gave me a tiny toolbox and a very important badge. Now I build lullabies, light lanterns and deliver dreams until sunrise. You're welcome here any time. Just keep it down, zzz.</p></div>
+</section>
+
+<section id="guestbook">
+  <h2>Sign my wall</h2>
+  <p>Leave a note for Pip. Notes are saved in your own browser.</p>
+  <form class="gb" id="gb"><input id="gn" placeholder="Your name" maxlength="24" required aria-label="Your name"><textarea id="gm" placeholder="Sweet dreams message…" maxlength="120" rows="2" required aria-label="Your message"></textarea><button class="btn" style="justify-self:start">Stick it up 📌</button></form>
+  <ul id="wall"></ul>
+</section>
+
+<footer>
+  <p>You are sleepy visitor</p>
+  <div class="odo" id="odo" aria-label="Visitor counter"></div>
+  <p><small>(counted on this device)</small></p>
+  <p><span class="b88">MADE WITH LOVE</span><span class="b88">BEST AT BEDTIME</span><span class="b88">NO SCARY STUFF</span></p>
+  <button id="moon" aria-label="A tiny moon. Maybe tap it a few times?">🌙</button>
+  <p><small>Built for the haX.baby “Baby's First Website” hackathon.</small></p>
+</footer>
+<div id="toast" role="status" aria-live="polite"></div>
+<div id="dark" aria-hidden="true"></div>
+<canvas id="fx"></canvas>
+
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+let toastT;function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove('show'),2600)}
+
+/* ---------- sound (Web Audio) + mute ---------- */
+let muted=store.get('pipMute')==='1',ac;
+const PENT=[261.63,293.66,329.63,392,440,523.25,587.33,659.25];
+function tone(f,t=0,d=1.2,v=.12,type='sine'){
+  if(muted)return;
+  ac=ac||new(window.AudioContext||window.webkitAudioContext)();
+  if(ac.state==='suspended')ac.resume();
+  const o=ac.createOscillator(),g=ac.createGain(),s=ac.currentTime+t;
+  o.type=type;o.frequency.value=f;
+  g.gain.setValueAtTime(0,s);g.gain.linearRampToValueAtTime(v,s+.02);g.gain.exponentialRampToValueAtTime(.0001,s+d);
+  o.connect(g).connect(ac.destination);o.start(s);o.stop(s+d+.05);
+}
+const pop=()=>tone(PENT[Math.random()*8|0]*2,0,.35,.06,'triangle');
+function paintMute(){const b=$('#mute');b.textContent=muted?'🔇':'🔊';b.setAttribute('aria-pressed',muted);b.setAttribute('aria-label',muted?'Unmute sounds':'Mute sounds')}
+$('#mute').onclick=()=>{muted=!muted;store.set('pipMute',muted?'1':'0');paintMute();if(!muted)pop()};paintMute();
+document.addEventListener('click',e=>{if(e.target.closest('button:not(.blk),a'))pop()});
+
+/* ---------- theme ---------- */
+function setTheme(t){document.documentElement.dataset.theme=t;store.set('pipTheme',t);const b=$('#theme');b.textContent=t==='night'?'☀️':'🌙';b.setAttribute('aria-label',t==='night'?'Switch to day mode':'Switch to night mode')}
+setTheme(store.get('pipTheme')||(matchMedia('(prefers-color-scheme:dark)').matches?'night':'day'));
+$('#theme').onclick=()=>setTheme(document.documentElement.dataset.theme==='night'?'day':'night');
+
+/* ---------- eyes follow pointer ---------- */
+addEventListener('pointermove',e=>{
+  $$('.eye').forEach(el=>{const r=el.getBoundingClientRect(),cx=r.left+r.width/2,cy=r.top+r.height/2;
+    const dx=e.clientX-cx,dy=e.clientY-cy,d=Math.hypot(dx,dy)||1,m=Math.min(1,d/160)*(r.width*.3);
+    el.style.setProperty('--dx',dx/d*m+'px');el.style.setProperty('--dy',dy/d*m+'px')});
+});
+
+/* ---------- sparkle trail ---------- */
+let lastSp=0;
+addEventListener('pointermove',e=>{
+  if(reduce||e.timeStamp-lastSp<45)return;lastSp=e.timeStamp;
+  const s=document.createElement('span');s.className='spark';s.textContent=['✦','✧','★','·'][Math.random()*4|0];
+  s.style.left=e.clientX+(Math.random()*14-7)+'px';s.style.top=e.clientY+(Math.random()*14-7)+'px';s.style.fontSize=8+Math.random()*12+'px';
+  document.body.appendChild(s);setTimeout(()=>s.remove(),800);
+});
+
+/* ---------- hero button ---------- */
+$('#hello').onclick=()=>{sleep(3500);toast('Goodnight! zzz 💤')};
+function sleep(ms){const p=$('#pip');p.classList.add('asleep');setTimeout(()=>p.classList.remove('asleep'),ms)}
+
+/* ---------- Lullaby Lab ---------- */
+function note(x,y){const n=document.createElement('span');n.className='note';n.textContent=['♪','♫','✨'][Math.random()*3|0];n.style.left=x+'px';n.style.top=y+'px';document.body.appendChild(n);setTimeout(()=>n.remove(),1800)}
+function lullaby(){
+  if(muted){toast('Sound is muted. Tap the speaker to hear the music box.');}
+  const card=$('#lab'),r=$('#box').getBoundingClientRect();
+  card.classList.remove('wound');void card.offsetWidth;card.classList.add('wound');
+  let i=3;
+  for(let n=0;n<10;n++){
+    i=Math.max(0,Math.min(7,i+[-2,-1,0,1,1,2][Math.random()*6|0]));
+    tone(PENT[i],n*.55,1.8,.13,'triangle');tone(PENT[i]/2,n*.55,2,.04);
+    setTimeout(()=>note(r.left+r.width*(.3+Math.random()*.4),r.top+r.height*.4),n*550);
+  }
+}
+$('#box').onclick=lullaby;$('#wind').onclick=lullaby;
+
+/* ---------- Nightlight ---------- */
+$('#lampbtn').onclick=()=>{const on=$('#lamp').classList.toggle('on');$('#lampbtn').setAttribute('aria-pressed',on);tone(on?523.25:392,0,.6,.1)};
+
+/* ---------- Rattle & Block toys ---------- */
+const BL=['⭐','🌙','☁️','🎵','🧸'],BC=['#ffd68a','#c9b8f0','#bfe3f5','#f4a9c0','#c8e6b8'],mel=[];
+BL.forEach((e,i)=>{const b=document.createElement('button');b.className='blk';b.textContent=e;b.style.background=BC[i];b.setAttribute('aria-label','Block '+(i+1));b.onclick=()=>blk(i);$('#blocks').appendChild(b)});
+function blk(i,silent){const b=$('#blocks').children[i];b.classList.remove('hit');void b.offsetWidth;b.classList.add('hit');tone(PENT[i+1],0,.9,.14,'triangle');if(!silent){mel.push(i);if(mel.length>8)mel.shift()}}
+$('#replay').onclick=()=>{if(!mel.length){toast('Tap some blocks first!');return}mel.forEach((n,k)=>setTimeout(()=>blk(n,true),k*400))};
+$('#rattle').onclick=()=>{const r=$('#rattle');r.classList.remove('shake');void r.offsetWidth;r.classList.add('shake');for(let k=0;k<8;k++)tone(1200+Math.random()*900,k*.05,.08,.05,'square')};
+
+/* ---------- Flashlight cursor ---------- */
+function lightPos(x,y){const r=document.documentElement.style;r.setProperty('--x',x+'px');r.setProperty('--y',y+'px')}
+addEventListener('pointermove',e=>lightPos(e.clientX,e.clientY));
+addEventListener('touchmove',e=>{const t=e.touches[0];if(t)lightPos(t.clientX,t.clientY)},{passive:true});
+$('#torch').onclick=()=>{const on=document.body.classList.toggle('torch');$('#torch').setAttribute('aria-pressed',on);if(on){setTheme('night');toast('Flashlight on. Sweep it around, Pip hid a few things.')}};
+
+/* ---------- Dream Delivery route ---------- */
+const rp=$('#rp'),rd=$('#rd'),L=rp.getTotalLength(),stops=[['Owl Nest',0],['Fox Den',.34],['Hedgehog Hollow',.68],['Moon Pond',1]],sg=$('#stops'),sEls=[];
+rd.style.strokeDasharray=L;
+stops.forEach(([n,f],k)=>{const p=rp.getPointAtLength(L*f),g=document.createElementNS('http://www.w3.org/2000/svg','g');g.setAttribute('class','stop');
+  g.innerHTML=`<circle cx="${p.x}" cy="${p.y}" r="8"/><text x="${p.x}" y="${p.y+(k%2?26:-16)}">${n}</text>`;sg.appendChild(g);sEls.push(g)});
+function route(){
+  const r=$('#route').getBoundingClientRect(),vh=innerHeight;
+  const p=Math.max(0,Math.min(1,(vh*.85-r.top)/(vh*.85+r.height*.2-(-r.height*.1))*1.6));
+  rd.style.strokeDashoffset=L*(1-p);const pt=rp.getPointAtLength(L*p);
+  $('#cloud').setAttribute('transform',`translate(${pt.x} ${pt.y-12})`);
+  sEls.forEach((g,k)=>g.classList.toggle('hit',p>=stops[k][1]-.001&&p>0));
+}
+addEventListener('scroll',route,{passive:true});addEventListener('resize',route);route();
+
+/* ---------- story scenes ---------- */
+const io=new IntersectionObserver(es=>es.forEach(e=>e.target.classList.toggle('in',e.isIntersecting)),{threshold:.45});
+$$('.scene').forEach(s=>io.observe(s));
+
+/* ---------- guestbook (localStorage; swap for a real DB later) ---------- */
+let notes;try{notes=JSON.parse(store.get('pipWall')||'null')}catch(e){}
+notes=notes||[{n:'Moon',m:'Sweet dreams, Pip! You are doing great.'},{n:'Sleepy Owl',m:'Hoo needs a lullaby? Me. zzz'}];
+function drawWall(){const w=$('#wall');w.textContent='';notes.slice(-12).reverse().forEach((x,i)=>{const li=document.createElement('li'),b=document.createElement('b'),p=document.createElement('span');
+  b.textContent=x.n;p.textContent=x.m;li.style.setProperty('--t',(i%2?1.5:-1.5)+'deg');li.append(b,p);w.appendChild(li)})}
+$('#gb').onsubmit=e=>{e.preventDefault();notes.push({n:$('#gn').value.trim(),m:$('#gm').value.trim()});store.set('pipWall',JSON.stringify(notes));drawWall();e.target.reset();toast('Pinned to the wall 📌')};
+drawWall();
+
+/* ---------- visitor odometer ---------- */
+let visits=(+store.get('pipVisits')||0)+1;store.set('pipVisits',visits);
+const od=$('#odo');String(visits).padStart(5,'0').split('').forEach(d=>{const b=document.createElement('b');b.textContent=d;od.appendChild(b)});
+
+/* ---------- hidden Easter egg: type "zzz" or tap the footer moon 5 times ---------- */
+const cv=$('#fx'),cx=cv.getContext('2d');let parts=[],raf;
+function fit(){cv.width=innerWidth;cv.height=innerHeight}fit();addEventListener('resize',fit);
+function starShower(){
+  for(let i=0;i<110;i++)parts.push({x:Math.random()*cv.width,y:-20-Math.random()*cv.height*.5,v:2+Math.random()*3,s:10+Math.random()*16,r:Math.random()*6,c:['#ffd68a','#f4a9c0','#c9b8f0','#fff'][i%4]});
+  cancelAnimationFrame(raf);(function loop(){cx.clearRect(0,0,cv.width,cv.height);
+    parts.forEach(p=>{p.y+=p.v;p.r+=.05;cx.save();cx.translate(p.x+Math.sin(p.r)*20,p.y);cx.rotate(p.r);cx.fillStyle=p.c;cx.font=p.s+'px sans-serif';cx.fillText('★',0,0);cx.restore()});
+    parts=parts.filter(p=>p.y<cv.height+30);if(parts.length)raf=requestAnimationFrame(loop);else cx.clearRect(0,0,cv.width,cv.height)})();
+}
+function egg(){if(reduce){toast('Shhh… Pip fell asleep 💤');return}starShower();sleep(4000);[0,.4,.8].forEach((t,i)=>[PENT[2],PENT[4],PENT[5]].forEach((f,j)=>tone(f,t+j*.15,1.5,.1,'triangle')));toast('Shhh… you woke the star shower. Pip is asleep now 💤')}
+let typed='';addEventListener('keydown',e=>{typed=(typed+e.key).slice(-3).toLowerCase();if(typed==='zzz')egg()});
+let taps=0,tapT;$('#moon').onclick=()=>{taps++;clearTimeout(tapT);tapT=setTimeout(()=>taps=0,1500);if(taps>=5){taps=0;egg()}};
+</script>
+</body>
+</html>
